@@ -1,0 +1,52 @@
+{% extends 'user/auth/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+ثبت نام
+{% endblock %}
+
+{% block h2 %}
+<h2 class="heading-section">ثبت نام در سایت</h2>
+{% endblock %}
+
+{% block form %}
+
+<form method="POST" class="signin-form">
+    {% csrf_token %}
+    <div class="form-group">
+        {{form.username|add_class:"form-control"|attr:"placeholder:نام کاربری*"|attr:"required"}}
+        <!-- <input type="text" class="form-control" placeholder="نام کاربری" required> -->
+    </div>
+    <div class="form-group">
+        {{form.email|add_class:"form-control"|attr:"placeholder:ایمیل*"|attr:"required"}}
+        <!-- <input type="text" class="form-control" placeholder="نام کاربری" required> -->
+    </div>
+    <div class="form-group">
+        {{form.first_name|add_class:"form-control"|attr:"placeholder:نام(اختیاری)"}}
+        <!-- <input type="text" class="form-control" placeholder="نام کاربری" required> -->
+    </div>
+    <div class="form-group">
+        {{form.last_name|add_class:"form-control"|attr:"placeholder:نام خانوادگی(اختیاری)"}}
+        <!-- <input type="text" class="form-control" placeholder="نام کاربری" required> -->
+    </div>
+    <div class="form-group">
+        {{form.password1|add_class:"form-control"|attr:"placeholder:پسورد*"|attr:"required"|attr:"id:password-field"}}
+        <!-- <input id="password-field" type="password" class="form-control" placeholder="پسورد" required> -->
+        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+    </div>
+    <div class="form-group">
+        {{form.password2|add_class:"form-control"|attr:"placeholder:تایید پسورد*"|attr:"required"|attr:"id:password-field"}}
+        <!-- <input id="password-field" type="password" class="form-control" placeholder="پسورد" required> -->
+        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+    </div>
+    <div class="form-group">
+    <button type="submit" class="form-control btn btn-primary submit px-3">ثبت نام</button>
+    </div>
+    <div class="form-group d-md-flex">
+        <div class="mr-3 text-md-right">
+            <a href="#" style="color: #fff">&larr; ورود</a>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

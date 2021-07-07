@@ -1,0 +1,65 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>اکانت | {% block title %}{% endblock title %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="{% static 'user/auth/font-awesome/font-awesome.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static 'user/auth/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'user/auth/css/alertify.min.css' %}">
+	<link rel="stylesheet" href="{% static 'user/auth/css/default.min.css' %}">
+    <script src="{% static 'user/auth/js/alertify.js' %}"></script>
+
+	</head>
+	<body dir="rtl" class="sahel img js-fullheight" style="background-image: url({% static 'user/auth/images/dark_tint.png' %}),url({% static 'user/auth/images/pubg2.jpg' %});">
+        
+        <section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					{% block h2 %}{% endblock h2 %}
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <div class="bar error">
+                                {% for error in field.errors %}
+                                    
+                                    <p>{{error}}</p>
+                                    
+                                {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% block form %}
+                        
+                        {% endblock form %}
+                    
+		            </div>
+				</div>
+			</div>
+		</div>
+	</section>
+    {% if messages %}
+        {% for message in messages %}
+            <script>alertify.set('notifier','position', 'top-right');</script>
+            <script>alertify.notify('{{message}}', 'success', 5)</script>
+        {% endfor %}
+    {% endif %}
+    <script src="{% static 'user/auth/js/jquery.min.js' %}"></script>
+    <script src="{% static 'user/auth/js/popper.js' %}"></script>
+    <script src="{% static 'user/auth/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'user/auth/js/main.js' %}"></script>
+
+
+	</body>
+</html>
+
