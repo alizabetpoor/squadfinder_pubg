@@ -1,0 +1,45 @@
+{% extends 'article/base.html' %}
+{% load static %}
+{% load base_tags %}
+{% load humanize %}
+{% block content %}
+    <section class="cards d-flex flex-column align-items-center mt-2">
+        {% for article in articles %}
+            <section class="custom-card rounded">
+                <div>
+                    <div class="card-header card-header-custom d-flex flex-column flex-sm-row align-items-center justify-content-between row border-bottom border-secondary">
+                        <div class="card-header-right d-flex align-items-center">
+                            <img class="rounded card-photo" src="{% static 'article/assets/images/pngaaa.com-512997.png' %} " alt="">
+                            <h5>درخواست تیم</h5>
+                        </div>
+                        <div class="card-header-left flex-column flex-lg-row">
+                            <span class="text-black-50 h6">{{article.publish|naturaltime}}</span>
+                            <a href="{% url 'user:account_profile' article.author.username %}" class="text-success">توسط {{article.author.first_name}}</a>
+                        </div>
+                    </div>
+                    <div class="card-custom-body">
+                        <div class="row flex-column flex-lg-row justify-content-around align-items-center">
+                            <span class="">حداقل رنک:{{article.min_rank}}</span>
+                            <span class="">سرور:{{article.get_server_display}}</span>
+                        </div>
+                        <div class="row flex-column flex-lg-row justify-content-around align-items-center">
+                            <span class="">نقش:{{article.role}}</span>
+                            <span class="">حداقل کی دی:{{article.min_kd}}</span>
+                        </div>
+                    </div>
+                    <div class="card-custom-footer row justify-content-center justify-content-lg-end">
+                        <a href="#" class="btn btn-success">درخواست عضویت</a>
+                    </div>
+                </div>
+            </section>
+        {% empty %}
+            <section class="empty-warn bg-warning p-4 text-center rounded">
+                <span>هیچ مقاله ای موجود نیست.</span>
+            </section>
+        {% endfor %}
+    </section>
+{% endblock %}
+{% block pagination %}
+    {% pagination articles 'article:home' page_range %}
+    
+{% endblock %}

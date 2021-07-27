@@ -1,0 +1,25 @@
+<section class="pagination-container mt-3">
+    <div class="text-center mx-3 mx-sm-0">
+        <div class="pagination-custom">
+        {% if pages.has_previous %}
+            <a href="{% url link pages.previous_page_number %}">&raquo;</a>
+        {% endif %}
+        {% for page in page_range %}
+            {% if page == pages.number %}
+                <a class="active-custom" href="{% url link page %}">{{page}}</a>
+            
+            {% else %}
+                {% if page == pages.paginator.ELLIPSIS %}
+                    <a class="active-custom" href="#">{{page}}</a>
+                {% else %}
+                    <a href="{% url link page %}">{{page}}</a>
+                {% endif %}
+            
+            {% endif %}
+        {% endfor %}
+        {% if pages.has_next %}
+            <a href="{% url link pages.next_page_number %}">&laquo;</a>
+        {% endif %}
+        </div>
+    </div>
+</section>

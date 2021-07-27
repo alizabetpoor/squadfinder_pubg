@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'article/assets/css/bootstrap/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'article/assets/css/animate.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'article/assets/fontawesome/css/all.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'article/assets/css/style.css' %}" >
+    <link rel="stylesheet" href="{% static 'article/assets/css/grid.css' %}" >
+    <title>squadfinder</title>
+</head>
+<body dir="rtl">
+    <header>
+        <nav class="header d-flex justify-content-sm-around px-2 px-sm-0 justify-content-between align-items-center bg-gray-color text-white">
+            <section id="menu-toggle" class="mobile-menu d-sm-none d-block">
+                <span class="border-secondary px-1 border rounded "><i class="fas fa-ellipsis-h pointer"></i></span>
+            </section>
+            <section class="right-header">
+                <img class="logo" src="{% static 'article/assets/images/logo.png' %}" alt="">
+                <ul class="menu d-none d-sm-flex">
+                    <li><i class="fas fa-home"></i><a href="#">خانه</a></li>
+                    <li><i class="fas fa-users"></i><a href="#">تیم ها</a></li>
+                    <li><i class="fas fa-user"></i><a href="#">کاربران</a></li>
+                </ul>
+            </section>
+            <section class="left-header">
+                {% if user.is_authenticated %}
+                    <a href="#" class="btn btn-info"><i class="fas fa-user mx-1"></i>پروفایل</a>
+                {% else %}
+                    <span class="login-button">
+                        <a href="#" class="btn btn-light">ورود</a>
+                    </span>
+                    <span>/</span>
+                    <span class="signup-button">
+                        <a href="#" class="btn btn-light">ثبت نام</a>
+                    </span>
+                {% endif %}
+            </section>
+        </nav>
+    </header>
+
+
+    <main>
+        <section class="main">
+            <section class="main-container d-flex flex-column flex-md-row">
+                <section class="main-content">
+                    <section class="main-notification d-flex justify-content-center">
+                        <div class="bg-danger rounded notification-container d-flex align-items-center">
+                            <i id="close-notif" class="fas fa-window-close text-dark pointer"></i>
+                            <span class="text-white mr-4">متن نوتیف ما که یخورده زیاد شده</span>
+                        </div>
+                    </section>
+
+                    {% block content %}
+                    {% endblock content%}
+
+
+
+
+                    {% block pagination %}
+                        <section class="pagination-container mt-3">
+                            <div class="text-center mx-3 mx-sm-0">
+                                <div class="pagination-custom">
+                                <a href="#">&raquo;</a>
+                                <a href="#">1</a>
+                                <a href="#" class="active-custom">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">&laquo;</a>
+                                </div>
+                            </div>
+                        </section>
+                    {% endblock pagination %}
+                </section>
+                <section class="main-aside">
+                    <aside>
+                        <section class="last-user">
+                            <div class="aside-header border-bottom m-2">
+                                <span class="p-1 h5">آخرین کاربران</span>
+                            </div>
+                            <div class="aside-body">
+                                <div class="">
+                                    <div class="widget">
+                                        <div class="widget-content">
+                                            <ul class="widget-user-list">
+                                                <li><a href="#"><img src="assets/images/default-user-image.png" alt=""></a></li>
+                                                <li><a href="#"><img src="assets/images/default-user-image.png" alt=""></a></li>
+                                                <li><a href="#"><img src="assets/images/default-user-image.png" alt=""></a></li>
+                                                <li><a href="#"><img src="assets/images/default-user-image.png" alt=""></a></li>
+                                                <li class="number"><a href="#">+26</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </section>
+                        <section class="last-news">
+                            <div class="aside-header border-bottom m-2">
+                                <span class="p-1 h5">اطلاعیه ها</span><span class="badge badge-danger">جدید</span>
+                            </div>
+                            <div class="aside-body mx-2 mt-1">
+                                <p class="bg-white-color rounded p-1">سایت به زودی بروزرسانی میشود</p>
+                                <p class="bg-white-color rounded p-1">افزایش تعداد درخواست در هفته</p>
+                            </div>
+
+                        </section>
+                        <section class="news-letter mb-3">
+                            <div class="aside-header border-bottom m-2">
+                                <span class="p-1 h5">خبرنامه</span>
+                            </div>
+                            <div class="aside-body d-flex justify-content-center">
+                                <form class="form-newsletter d-lg-block d-flex flex-column align-items-center" action="">
+                                    <i class="fas fa-envelope d-none d-lg-inline"></i>
+                                    <input type="email" placeholder="Email" />
+                                    <button type="submit" class="btn btn-success">عضویت</button>
+                                </form>
+                            </div>
+                        </section>
+                    </aside>
+                </section>
+            </section>
+        </section>
+    </main>
+
+    <footer class="bg-gray-color">
+        <section class="footer d-flex justify-content-center align-items-center">
+            <div>
+                <h5 class="">طراحی شده توسط علی ضابط پور</h5>
+            </div>
+        </section>
+    </footer>
+
+
+    <script src="{% static 'article/assets/js/bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'article/assets/js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'article/assets/js/popper.js' %}"></script>
+    <script src="{% static 'article/assets/js/grid.js' %}"></script>
+</body>
+</html>

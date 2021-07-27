@@ -1,6 +1,6 @@
 from django.db import models
 from multiselectfield import MultiSelectField
-from user.models import User,ROLE_CHOICES,SERVER_CHOICES
+from user.models import User,ROLE_CHOICES,SERVER_CHOICES,Rank
 from django.utils import timezone
 # Create your models here.
 class Squad_Article(models.Model):
@@ -8,9 +8,9 @@ class Squad_Article(models.Model):
         verbose_name="پست اسکواد"
         verbose_name_plural="پست اسکواد ها"
     author=models.ForeignKey(User,null=True,on_delete=models.SET_NULL,verbose_name="نویسنده",related_name="article")
-    role=MultiSelectField(max_length=8,max_choices=4,choices=ROLE_CHOICES,verbose_name="نقش")
+    role=MultiSelectField(max_length=11,max_choices=4,choices=ROLE_CHOICES,verbose_name="نقش")
     server=models.CharField(max_length=2,choices=SERVER_CHOICES,verbose_name="سرور")
-    min_rank=models.CharField(max_length=30,verbose_name="حداقل رنک")
+    min_rank=models.ForeignKey(Rank,on_delete=models.DO_NOTHING,related_name="squad_article")
     min_kd=models.FloatField(max_length=5,verbose_name="حداقل kd")
     min_level=models.FloatField(max_length=5,verbose_name="حداقل level")
     apply=models.ManyToManyField(User,blank=True,related_name="requested",verbose_name="متقاضیان")
@@ -23,6 +23,6 @@ class Squad_Article(models.Model):
     def count_apply(self):
         self.apply.objects.count()
     def count_accepted(self):
-        self.apply.objects.count()
+        self.accepted.objects.count()
     def count_rejected(self):
-        self.apply.objects.count()
+        self.rejected.objects.count()
