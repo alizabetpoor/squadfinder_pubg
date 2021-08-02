@@ -1,10 +1,12 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,PasswordChangeForm
 from .models import User,account_detail
-from django.forms import ModelForm, fields
+from django.forms import ModelForm, fields, models, widgets
 from crispy_forms.helper import FormHelper
 from django.utils.translation import gettext as _
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import PasswordResetForm
+
 
 
 class signupfrom(UserCreationForm):
@@ -54,13 +56,14 @@ class acc_detail_form(ModelForm):
     def __init__(self, *args,**kwargs):
 
         super(acc_detail_form,self).__init__(*args,**kwargs)
-
-        
+        self.fields["role"].label="نقش"
+        self.fields["start_season"].label="فصل شروع بازی"
             
     class Meta:
         model=account_detail
         fields=["rank","start_season","role","server","level"
-                ,"id_game","username_game","kd",]
+                ,"id_game","username_game","kd","time_to_play",]
+
 
 
 class user_detail_form(ModelForm):
@@ -82,3 +85,26 @@ class user_detail_form(ModelForm):
         model=User
         fields=["username","first_name","last_name","email","phonenumber"
                 ,"phone_verify","email_verify",]
+
+
+class change_password(PasswordChangeForm):
+    pass
+
+class notifform(ModelForm):
+
+
+    class Meta:
+        model=User
+        fields=["email_notif","phone_sms"]
+
+
+
+
+class emailvalidatepasswordreset(PasswordResetForm):
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if not User.objects.filter(email=email).first():
+            msg = _("ایمیل شما در سایت موجود نمیباشد")
+            self.add_error('email', msg)
+        return email
