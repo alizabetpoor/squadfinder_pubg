@@ -1,0 +1,230 @@
+{% extends 'article/base.html' %}
+{% load widget_tweaks %}
+
+{% block pagination %}{% endblock pagination %}
+
+{% block content %}
+    <!-- div profile  start -->
+
+                    <div class="container-profile d-flex flex-column align-items-center mt-3">
+
+                  
+                        <div class="row gutters-sm">
+                          <div class="col-md-4 d-none d-md-block">
+                            <div class="card">
+                              <div class="card-body">
+                                <nav class="nav flex-column nav-pills nav-gap-y-1">
+                                  <a href="#profile" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded active">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user mr-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>اطلاعات شما
+                                  </a>
+                                  <a href="#account" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings mr-2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>اطلاعات اکانت پابجی
+                                  </a>
+                                  <a href="#security" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield mr-2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>امنیت
+                                  </a>
+                                  <a href="#notification" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell mr-2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>اطلاعیه ها
+                                  </a>
+
+                                </nav>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card">
+                              <div class="card-header border-bottom mb-3 d-flex d-md-none">
+                                <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
+                                  <li class="nav-item">
+                                    <a href="#profile" data-toggle="tab" class="nav-link has-icon active"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="#account" data-toggle="tab" class="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="#security" data-toggle="tab" class="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="#notification" data-toggle="tab" class="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="#billing" data-toggle="tab" class="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></a>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="card-body tab-content">
+                                <div class="tab-pane active" id="profile">
+                                  <h6>اطلاعات شما</h6>
+                                  <hr>
+                                  <form method="POST" >
+                                    {% csrf_token %}
+                                    {% if not user.phone_verify %}
+                                        <p class="bg-warning p-2">شماره موبایل شما تاییده نشده است</p>
+                                    {% endif %}
+                                    {% if not user.email_verify %}
+                                        <p class="bg-warning p-2">ایمیل شما تایید نشده است</p]>
+                                    
+                                    {% endif %}
+                                    <div class="form-group">
+                                      <label for="first_name">نام</label>
+                                      {{form_user.first_name|add_class:"form-control"|attr:"id:first_name"|attr:"placeholder:نام"}}
+                                      {% if form_user.first_name.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_user.first_name.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="last_name">نام خانوادگی</label>
+                                      {{form_user.last_name|add_class:"form-control"|attr:"id:last_name"|attr:"placeholder:نام خانوادگی"}}
+                                      {% if form_user.last_name.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_user.last_name.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="username">نام کاربری</label>
+                                      {{form_user.username|add_class:"form-control"|attr:"id:username"|attr:"placeholder:نام کاربری"}}
+                                       {% if form_user.username.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_user.username.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="email">ایمیل</label>
+                                      {{form_user.email|add_class:"form-control"|attr:"id:email"|attr:"placeholder:ایمیل"}}
+                                      {% if form_user.email.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_user.email.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <button type="submit" name="update_profile" class="btn btn-primary">آپدیت پروفایل</button>
+                                    <button type="reset" class="btn btn-light">ریست کردن</button>
+                                  </form>
+                                </div>
+                                <div class="tab-pane" id="account">
+                                  <h6>اطلاعات اکانت پابجی</h6>
+                                  <hr>
+                                  <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                      <label for="rank">رنک</label>
+                                      {{form_account.rank|add_class:"form-control"|attr:"id:rank"|attr:"placeholder:رنک"}}
+                                      {% if form_account.rank.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_account.rank.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="start_season">سیزن شروع</label>
+                                      {{form_account.start_season|add_class:"form-control"|attr:"id:start_season"|attr:"placeholder:سیزن شروع"}}
+                                      {% if form_account.start_season.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_account.start_season.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="role">نقش</label>
+                                      {{form_account.role|attr:"id:role"}}
+                                      {% if form_account.role.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_account.role.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="server">سرور</label>
+                                      {{form_account.server|add_class:"form-control"|attr:"id:server"|attr:"placeholder:سرور"}}
+                                      {% if form_account.server.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_account.server.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="level">لول</label>
+                                      {{form_account.level|add_class:"form-control"|attr:"id:level"|attr:"placeholder:لول"}}
+                                      {% if form_account.level.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_account.level.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="id_game">ایدی عددی</label>
+                                      {{form_account.id_game|add_class:"form-control"|attr:"id:id_game"|attr:"placeholder:ایدی عددی"}}
+                                      {% if form_account.id_game.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_account.id_game.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="username_game">نام شما در بازی</label>
+                                      {{form_account.username_game|add_class:"form-control"|attr:"id:username_game"|attr:"placeholder:نام شما در بازی"}}
+                                      {% if form_account.username_game.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_account.username_game.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="kd">کی دی</label>
+                                      {{form_account.kd|add_class:"form-control"|attr:"id:kd"|attr:"placeholder:کی دی"}}
+                                      {% if form_account.kd.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_account.kd.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="time_to_play">میزان ساعت بازی در روز</label>
+                                      {{form_account.time_to_play|add_class:"form-control"|attr:"id:time_to_play"|attr:"placeholder:میزان ساعت بازی در روز"}}
+                                      {% if form_account.time_to_play.errors %}
+                                          <p class="bg-warning p-1 text-danger rounded">{{form_account.time_to_play.errors.as_text}}</p>
+                                      {% endif %}
+                                    </div>
+                                    <hr>
+            
+                                    <button name="update_account" class="btn btn-danger" type="submit">آپدیت</button>
+                                  </form>
+                                </div>
+                                <div class="tab-pane" id="security">
+                                  <h6>تنظیمات امنیتی</h6>
+                                  <hr>
+                                  <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                      <label class="d-block">عوض کردن پسورد</label>
+                                      {% if form_change_pass.errors %}
+                                        {% for field in form_change_pass %}
+                                          {% if field.errors %}
+                                            <p class="alert alert-danger">{{field.errors.as_text}}</p>
+                                          {% endif %}
+                                        {% endfor %}
+                                      {% endif %}
+
+                                      {{form_change_pass.old_password|add_class:"form-control"|attr:"placeholder:پسورد قدیمی"}}
+                                      {{form_change_pass.new_password1|add_class:"form-control mt-1"|attr:"placeholder:پسورد جدید"}}
+                                      {{form_change_pass.new_password2|add_class:"form-control mt-1"|attr:"placeholder:تایدد پسورد جدید"}}
+                                    </div>
+                                    <hr>
+                                    <button name="update_password" class="btn btn-success" type="submit">آپدیت پسورد</button>
+
+                                  </form>
+                                  
+                                </div>
+                                <div class="tab-pane" id="notification">
+                                  <h6>تنظیمات اطلاع رسانی</h6>
+                                  <hr>
+                                  <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                      <label class="d-block mb-0">اطلاع رسانی</label>
+                                      <div class="custom-control custom-checkbox">
+                                        {{form_notif.email_notif|add_class:"custom-control-input"|attr:"id:customCheck1"}}
+                                        <label class="custom-control-label" for="customCheck1">دریافت ایمیل:</label>
+                                      </div>
+                                      <div class="custom-control custom-checkbox">
+                                        {{form_notif.phone_sms|add_class:"custom-control-input"|attr:"id:customCheck2"}}
+                                        <label class="custom-control-label" for="customCheck2">دریافت sms:</label>
+                                      </div>
+                                    </div>
+                                    <hr>
+                                    <button name="update_notif" class="btn btn-success" type="submit">آپدیت اطلاع رسانی</button>
+
+                                  </form>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  
+                      </div>
+
+                    <!-- div profile end -->
+
+{% endblock content %}
+
