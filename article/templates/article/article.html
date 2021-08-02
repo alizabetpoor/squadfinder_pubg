@@ -1,0 +1,73 @@
+{% extends 'article/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block style_link %}
+    <link rel="stylesheet" href="{% static 'article/assets/css/timeline.css' %}">
+{% endblock style_link %}
+
+{% block content %}
+<section class="cards d-flex flex-column align-items-center mt-2">
+    <section class="custom-card rounded">
+        <div>
+            <div class="card-header card-header-custom d-flex flex-column flex-sm-row align-items-center justify-content-between row border-bottom border-secondary">
+                <div class="card-header-right d-flex align-items-center">
+                    <img class="rounded card-photo" src="{% static 'article/assets/images/pngaaa.com-512997.png' %} " alt="">
+                    <h5 class="m-0">درخواست تیم</h5>
+                </div>
+                <div class="card-header-left flex-column flex-lg-row">
+                    <span class="text-black-50 h6">{{article.publish|naturaltime}}</span>
+                    <a href="{% url 'user:account_profile' article.author.username %}" class="text-success">توسط {% if article.author.first_name %}{{article.author.first_name}}{% else %}{{article.author.username}}{% endif %}</a>
+                </div>
+            </div>
+            <div class="card-custom-body">
+                <div class="row flex-column flex-lg-row justify-content-around align-items-center">
+                    <span class="">حداقل رنک:{{article.min_rank}}</span>
+                    <span class="">سرور:{{article.get_server_display}}</span>
+                </div>
+                <div class="row flex-column flex-lg-row justify-content-around align-items-center">
+                    <span class="">نقش:{{article.role}}</span>
+                    <span class="">حداقل کی دی:{{article.min_kd}}</span>
+                </div>
+                <div class="row flex-column flex-lg-row justify-content-around align-items-center">
+                    <span class="">حداقل لول:{{article.min_level}}</span>
+                    <span class="">حداقل ساعت بازی:{{article.min_time_to_play}}</span>
+                </div>
+                <div class="card-footer card-footer-custom">
+                    <div class="row">
+                        <span class="col-12 col-sm-4">تعداد درخواست:{{article.apply.count}}</span>
+                        <span class="col-12 col-sm-4">تعداد قبولی:{{article.accepted.count}}</span>
+                        <span class="col-12 col-sm-4">تعداد ردی:{{article.rejected.count}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-custom-footer row justify-content-center justify-content-lg-end">
+                {% if request.user.is_authenticated %}
+                    {% if request.user == article.author or request.user.is_superuser %}
+                        <a href="{% url 'article:edit' article.id %}" class="btn btn-primary ml-2">ادیت</a>
+                        <a href="#" class="btn disabled {% if article.new_apply > 0 %}btn-success {% else %}btn-info{% endif %}">درخواست های جدید:{{article.new_apply}}</a>
+                    {% else %}
+                        {% if article not in request.user.requested.all %}
+                            <a href="{% url 'article:request' article.id %}" class="btn btn-primary">ارسال درخواست</a>
+                        {% else %}
+                            {% if article in request.user.accepted.all %}
+                                <a href="#" class="btn btn-success disabled">درخواست شما قبول شده</a>
+                            {% elif article in request.user.rejected.all %}
+                                <a href="#" class="btn btn-danger disabled">درخواست شما رد شده</a>
+                            {% else %}
+                                <a href="#" class="btn btn-info disabled">درخواست فرستاده شده</a>
+
+                            {% endif %}
+
+                        {% endif %}
+                    {% endif %}
+                    
+                {% else %}
+                    <a href="{% url 'user:login' %}" class="btn btn-info">وارد شوید</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    {% include "article/users_request.html" %}
+</section>
+{% endblock content %}

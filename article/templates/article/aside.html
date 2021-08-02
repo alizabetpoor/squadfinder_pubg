@@ -1,0 +1,42 @@
+{% load base_tags %}
+<aside>
+    <section class="last-user">
+        <div class="aside-header border-bottom m-2">
+            <span class="p-1 h5">آخرین کاربران</span>
+        </div>
+        <div class="aside-body">
+            <div class="">
+                <div class="widget">
+                    <div class="widget-content">
+                        <ul class="widget-user-list">
+                            <li><a href="#"><img src="assets/images/default-user-image.png" alt=""></a></li>
+                            <li><a href="#"><img src="assets/images/default-user-image.png" alt=""></a></li>
+                            <li><a href="#"><img src="assets/images/default-user-image.png" alt=""></a></li>
+                            <li><a href="#"><img src="assets/images/default-user-image.png" alt=""></a></li>
+                            <li class="number"><a href="#">+26</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <section class="last-news">
+        <div class="aside-header border-bottom m-2">
+            <span class="p-1 h5">اطلاعیه ها</span><span class="badge badge-danger">جدید</span>
+        </div>
+        <div class="aside-body mx-2 mt-1">
+            <p class="bg-white-color rounded p-1">سایت به زودی بروزرسانی میشود</p>
+            <p class="bg-white-color rounded p-1">افزایش تعداد درخواست در هفته</p>
+        </div>
+
+    </section>
+    <section class="news-letter mb-3">
+        <div class="aside-header border-bottom m-2">
+            <span class="p-1 h5">خبرنامه</span>
+        </div>
+        <div class="aside-body d-flex justify-content-center">
+            {% newsletter request %}
+        </div>
+    </section>
+</aside>

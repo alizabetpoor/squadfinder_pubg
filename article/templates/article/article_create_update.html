@@ -1,0 +1,65 @@
+{% extends 'article/base.html' %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+<section class="cards d-flex flex-column align-items-center">
+
+    <section class="custom-card rounded">
+        <div>
+            <div class="card-header form-header d-flex flex-column flex-sm-row align-items-center justify-content-between row border-bottom border-secondary">
+                <div class="card-header-right d-flex align-items-center">
+                    <h5>نوشتن درخواست جدید</h5>
+                </div>
+                <div class="card-header-left flex-column flex-lg-row">
+
+                </div>
+            </div>
+            <form class="create-update-form" method="POST">
+                {% csrf_token %}
+                <div class="card-custom-body">
+                    {% if user.is_superuser %}
+                        <div class="row form-group flex-column flex-lg-row justify-content-around align-items-center">
+                            {{form.author|as_crispy_field}}
+                        </div>
+                        <div class="row form-group flex-column flex-lg-row justify-content-around align-items-center">
+                            {{form.apply|as_crispy_field}}
+                        </div>
+                        <div class="row form-group flex-column flex-lg-row justify-content-around align-items-center">
+                            {{form.accepted|as_crispy_field}}
+                            {{form.rejected|as_crispy_field}}
+                        </div>
+                    {% endif %}
+
+                    <div class="row form-group flex-column flex-lg-row justify-content-around align-items-center">
+                        {{form.server|as_crispy_field}}
+                        {{form.min_rank|as_crispy_field}}
+
+                    </div>
+
+                    <div class="row form-group flex-column flex-lg-row justify-content-around align-items-center">
+                        {{form.role|as_crispy_field}}
+                    </div>
+                    <div class="row form-group flex-column flex-lg-row justify-content-around align-items-center">
+                            {{form.min_level|as_crispy_field}}
+                            {{form.min_kd|as_crispy_field}}
+                            {{form.min_time_to_play|as_crispy_field}}
+                            {% if user.is_superuser %}
+                                {{form.publish|as_crispy_field}}    
+                            {% endif %}
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-around">
+                    {% if request.resolver_match.url_name == "edit" %}
+                        <button type="submit" class="col-12 col-md-4 btn btn-success">آپدیت درخواست</button>
+                        <a href="{% url 'article:delete' request.resolver_match.kwargs.pk %}" class="col-12 col-md-4 mt-2 mt-md-0 btn btn-danger">حذف درخواست</a>
+                    {% else %}
+                        <button type="submit" class="col-6 btn btn-success">ثبت درخواست</button>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </section>
+    
+
+</section>
+{% endblock content %}

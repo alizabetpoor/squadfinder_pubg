@@ -1,0 +1,27 @@
+{% load static %}
+<nav class="header d-flex justify-content-sm-around px-2 px-sm-0 justify-content-between align-items-center bg-gray-color text-white">
+    <section id="menu-toggle" class="mobile-menu d-sm-none d-block">
+        <span class="border-secondary px-1 border rounded "><i class="fas fa-ellipsis-h pointer"></i></span>
+    </section>
+    <section class="right-header">
+        <img class="logo" src="{% static 'article/assets/images/logo.png' %}" alt="">
+        <ul class="menu d-none d-sm-flex">
+            <li><i class="fas fa-home"></i><a href="{% url 'article:home' %}">خانه</a></li>
+            <li><i class="fas fa-users"></i><a href="{% url 'article:teams' %}">تیم ها</a></li>
+            <li><i class="fas fa-user"></i><a href="#">کاربران</a></li>
+        </ul>
+    </section>
+    <section class="left-header">
+        {% if user.is_authenticated %}
+            <a href="{% url 'user:user_setting' %}" class="btn btn-info"><i class="fas fa-user mx-1"></i>پروفایل</a>
+        {% else %}
+            <span class="login-button">
+                <a href="#" class="btn btn-light">ورود</a>
+            </span>
+            <span>/</span>
+            <span class="signup-button">
+                <a href="#" class="btn btn-light">ثبت نام</a>
+            </span>
+        {% endif %}
+    </section>
+</nav>

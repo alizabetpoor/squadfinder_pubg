@@ -1,0 +1,97 @@
+<div class="container animated animated-done bootdey mt-2" data-animate="fadeIn" data-animate-delay="0.05" style="animation-delay: 0.05s;">
+    <hr class="hr-lg mt-0 mb-2 w-10 mx-auto hr-primary">
+    <h2 class="text-slab text-center alert alert-info text-uppercase mt-0 mb-5">
+        درخواست های <span class="font-weight-bold">تیم</span>
+    </h2>
+    <div class="timeline timeline-left mx-lg-10">
+            <div class="timeline-breaker bg-info">درخواست های فرستاده شده</div>
+            <!--Timeline item 1-->
+            {% if article.new_apply != 0 %}
+
+                {% for user in article.apply.all %}
+                    
+
+                    {% if user not in article.accepted.all and user not in article.rejected.all %}
+                    <div class="timeline-item mt-3 row text-center p-2">
+                        <div class="col-12 font-weight-bold text-md-center">نام کاربری:<a class="text-primary" href="{% url 'user:account_profile' user.username %}">{{user.username}}</a></div>
+                        <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">سرور:{{user.acc_detail.get_server_display}}</div>
+                        <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">کی دی:{{user.acc_detail.kd}}</div>
+                        <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">رنک:{{user.acc_detail.rank}}</div>
+                        <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">لول:{{user.acc_detail.level}}</div>
+                        <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">سیزن شروع:{{user.acc_detail.start_season}}</div>
+                        <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">تایم بازی:{{user.acc_detail.time_to_play}} ساعت</div>
+                        <div class="col-12 font-weight-bold my-role text-md-center p-1">نقش:{{user.acc_detail.role}}</div>
+                        {% if request.user == article.author %}
+                            <a href="{% url 'article:accept' article.id user.username %}" class="btn btn-success col-12 col-md-6 mb-2 mb-md-0">قبول کردن</a>
+                            <a href="{% url 'article:reject' article.id user.username %}" class="btn btn-danger col-12 col-md-6">رد کردن</a>
+                        {% endif %}
+
+                    </div>
+                    {% endif %}
+
+                {% empty %}
+                    <div class="timeline-item mt-3 row text-center p-2">
+
+                        <p class="alert alert-info text-center col-12 mb-2 mb-md-0">درخواستی وجود ندارد</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="timeline-item mt-3 row text-center p-2">
+
+                        <p class="alert alert-info text-center col-12 mb-2 mb-md-0">درخواستی فعالی وجود ندارد</p>
+                </div>
+            {% endif %}
+            <div class="timeline-breaker bg-success timeline-breaker-middle">درخواست های قبول شده</div>
+            {% for user in article.accepted.all %}
+                <div class="timeline-item mt-3 row text-center p-2">
+                    <div class="col-12 font-weight-bold text-md-center">نام کاربری:<a class="text-primary" href="{% url 'user:account_profile' user.username %}">{{user.username}}</a></div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center">سرور:{{user.acc_detail.server}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center">کی دی:{{user.acc_detail.kd}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center">رنک:{{user.acc_detail.rank}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center">لول:{{user.acc_detail.level}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">سیزن شروع:{{user.acc_detail.start_season}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">تایم بازی:{{user.acc_detail.time_to_play}} ساعت</div>
+                    <div class="col-12 font-weight-bold my-role text-md-center">نقش:{{user.acc_detail.role}}</div>
+                    {% if request.user == article.author %}
+                        <div class="col-12 font-weight-bold alert alert-success text-md-center">ایدی عددی {{user.username}} در بازی:{{user.acc_detail.id_game}}</div>
+                        <div class="col-12 font-weight-bold alert alert-success text-md-center">یوزرنیم {{user.username}} در بازی:{{user.acc_detail.username_game}}</div>
+                    {% elif request.user == user  %}
+                        <div class="col-12 font-weight-bold alert alert-success text-md-center">ایدی عددی {{article.author.username}} در بازی:{{article.author.acc_detail.id_game}}</div>
+                        <div class="col-12 font-weight-bold alert alert-success text-md-center">یوزرنیم {{article.author.username}} در بازی:{{article.author.acc_detail.username_game}}</div>
+                    {% else %}
+                        <p class="alert alert-success text-center col-12 mb-2 mb-md-0">قبول شده</p>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <div class="timeline-item mt-3 row text-center p-2">
+
+                    <p class="alert alert-info text-center col-12 mb-2 mb-md-0">کسی قبول نشده است</p>
+                </div>
+            {% endfor %}
+
+
+            <div class="timeline-breaker bg-danger timeline-breaker-middle">درخواست های رد شده</div>
+            {% for user in article.rejected.all %}
+                <div class="timeline-item mt-3 row text-center p-2">
+                    <div class="col-12 font-weight-bold text-md-center">نام کاربری:<a class="text-primary" href="{% url 'user:account_profile' user.username %}">{{user.username}}</a></div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center">سرور:{{user.acc_detail.server}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center">کی دی:{{user.acc_detail.kd}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center">رنک:{{user.acc_detail.rank}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center">لول:{{user.acc_detail.level}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">سیزن شروع:{{user.acc_detail.start_season}}</div>
+                    <div class="col-12 col-sm-6 font-weight-bold text-md-center p-1">تایم بازی:{{user.acc_detail.time_to_play}} ساعت</div>
+                    <div class="col-12 font-weight-bold my-role text-md-center">نقش:{{user.acc_detail.role}}</div>
+                    <p class="alert alert-danger text-center col-12 mb-2 mb-md-0">رد شده</p>
+
+                </div>
+            {% empty %}
+                <div class="timeline-item mt-3 row text-center p-2">
+
+                    <p class="alert alert-info text-center col-12 mb-2 mb-md-0">کسی رد نشده است</p>
+                </div>
+            {% endfor %}
+
+
+
+    </div>
+</div>

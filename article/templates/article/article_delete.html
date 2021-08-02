@@ -1,0 +1,34 @@
+{% extends 'article/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class="cards d-flex flex-column align-items-center">
+
+    <section class="custom-card rounded">
+        <div>
+            <div class="card-header form-header d-flex flex-column flex-sm-row align-items-center justify-content-between row border-bottom border-secondary">
+                <div class="card-header-right d-flex align-items-center">
+                    <h5>حذف پست</h5>
+                </div>
+                <div class="card-header-left flex-column flex-lg-row">
+
+                </div>
+            </div>
+            <form class="delete-article-form" method="POST">
+                {% csrf_token %}
+                <div class="card-custom-body">
+                    <div class="row form-group flex-column flex-lg-row justify-content-around align-items-center">
+                            <p>از حذف این پست اطمینان دارید؟</p>
+                    </div>
+
+
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <button type="submit" class="col-6 btn btn-danger">حذف پست</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+
+</section>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'article/base.html' %}
+{% load base_tags %}
+
+{% block notif %}
+    
+{% endblock notif %}
+
+
+
+
+{% block content %}
+    {% include "article/searchbar.html" %}
+    {% articles articles request %}
+{% endblock content %}
+
+
+{% block pagination %}
+<section class="pagination-container mt-3">
+    <div class="text-center mx-3 mx-sm-0">
+        <div class="pagination-custom">
+        {% if articles.has_previous %}
+            <a href="{% url "article:teams" articles.previous_page_number %}{% if query != "" %}?{{query}}{% endif %}">&raquo;</a>
+        {% endif %}
+        {% for page in page_range %}
+            {% if page == articles.number %}
+                <a class="active-custom" href="{% url "article:teams" page %}{% if query != "" %}?{{query}}{% endif %}">{{page}}</a>
+            
+            {% else %}
+                {% if page == articles.paginator.ELLIPSIS %}
+                    <a class="active-custom" href="#">{{page}}</a>
+                {% else %}
+                    <a href="{% url "article:teams" page %}{% if query != "" %}?{{query}}{% endif %}">{{page}}</a>
+                {% endif %}
+            
+            {% endif %}
+        {% endfor %}
+        {% if articles.has_next %}
+            <a href="{% url "article:teams" articles.next_page_number %}{% if query != "" %}?{{query}}{% endif %}">&laquo;</a>
+        {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock pagination %}
+
+
+

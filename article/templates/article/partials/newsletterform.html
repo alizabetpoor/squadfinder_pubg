@@ -1,0 +1,8 @@
+{% load widget_tweaks %}
+
+<form class="form-newsletter d-lg-block d-flex flex-column align-items-center" method="POST" action="{% url 'article:newsletter' %}">
+    {% csrf_token %}
+    <i class="fas fa-envelope d-none d-lg-inline"></i>
+    {{form.email|attr:"placeholder:email"}}
+    <button type="submit" class="btn btn-success">عضویت</button>
+</form>
