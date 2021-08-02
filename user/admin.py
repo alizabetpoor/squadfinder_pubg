@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User,account_detail
+from .models import User,account_detail,Rank
 from django.contrib.auth.admin import UserAdmin
 # Register your models here.
 
@@ -19,7 +19,8 @@ admin.site.register(User,UserAdmin)
 class Account_Detail_Admin(admin.ModelAdmin):
     list_display=["get_player_username","rank","start_season","get_role_display","server",]
 
+class Rank_Admin(admin.ModelAdmin):
+    list_display=["title","position"]
 
-
-
+admin.site.register(Rank,Rank_Admin)
 admin.site.register(account_detail,Account_Detail_Admin)
