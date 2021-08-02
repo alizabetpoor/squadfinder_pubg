@@ -63,6 +63,8 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
+  position: relative;
+  background-size: 100vh 100vw ;
   background-color: #fff; }
 
 [tabindex="-1"]:focus {
@@ -8150,7 +8152,9 @@ body {
   font-weight: normal;
   color: gray;
   position: relative;
+  min-height: 100vh;
   z-index: 0;
+  height: 100%;
   padding: 0; }
   body:after {
     position: absolute;
@@ -8160,7 +8164,8 @@ body {
     bottom: 0;
     content: '';
     background: #000;
-    opacity: .3;
+    opacity: .6;
+    height: 100%;
     z-index: -1; }
 
 a {
@@ -8202,9 +8207,8 @@ h1, h2, h3, h4, h5,
   background-repeat: no-repeat;
   background-position: center center;
 	background-attachment:fixed;
-	height:100vh!important;
-	min-height:100%;
 }
+
 
 .login-wrap {
   position: relative;
