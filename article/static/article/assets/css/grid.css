@@ -234,12 +234,22 @@ main{
 .footer > div > h5{
     color: #ededed;
 }
+.card-footer-custom{
+    background-color: #17a2b8;
+    color: #f8f9fa;
+}
+.messages-container{
+    width: 60%;
+}
 @media only screen and (max-width:767.98px){
     .main-content{
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .bootdey{
+        width: 90%!important;
     }
     .main-notification{
         width: 100%;
@@ -260,6 +270,15 @@ main{
     .main-container{
         align-items: center;
     }
+    .search-bar{
+        width: 100%;
+    }
+    .form-search-bar{
+        width: 90%!important;
+    }
+    .messages{
+        width: 100%;
+    }
 }
 @media only screen and (max-width:575.98px){
     .card-custom-body{
@@ -268,6 +287,7 @@ main{
     .custom-card{
         width: 100%;
     }
+
     .menu{
         position: absolute;
         display: flex;
@@ -319,4 +339,84 @@ main{
 .search-box{
     margin-top: 20px;
     width: 60%;
+}
+/* profile start */
+
+.main-body {
+    padding: 15px;
+}
+
+.nav-link {
+    color: #4a5568;
+}
+.nav-link:hover {
+    color: #4b28e2;
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+    width: 80%;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+
+
+
+/* profile end */
+
+
+/* searchbar start */
+
+.form-search-bar{
+    width: 60%;
+    box-shadow: 0px 0px 15px 5px #ededed;
+}
+
+
+/* searchbar end */
+
+.transition{
+    min-height: 150px;
+}
+
+.form-check-label{
+    margin-right: 20px;
 }

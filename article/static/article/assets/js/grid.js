@@ -22,4 +22,5 @@ $(document).ready(function(){
         },300)
         $(".main-notification").slideUp(300);
     })
+    $('.ui.dropdown').dropdown();
 })
