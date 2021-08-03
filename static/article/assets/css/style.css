@@ -1,0 +1,38 @@
+@font-face {
+    font-family: sahel;
+    src: url("../fonts/Sahel.woff") format("woff");
+}
+html,body{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+*{
+    direction: rtl;
+    text-align: right;
+    font-family: "sahel";
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.bg-black-color{
+    background-color: #171717;
+}
+.bg-gray-color{
+    background-color: #444444;
+}
+.bg-red-color{
+    background-color: #da0037;
+}
+.bg-white-color{
+    background-color: #ededed;
+}
+.pointer{
+    cursor: pointer;
+}
