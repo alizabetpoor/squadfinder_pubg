@@ -61,6 +61,9 @@ def logout_view(request):
     return redirect("user:login")
 
 
+def home(request):
+    return redirect("user:user_setting")
+
 
 
 def account_profile(request,username):

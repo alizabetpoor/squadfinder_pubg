@@ -10,10 +10,12 @@ passwordreset,
 passwordresetdone,
 passwordresetcomplete,
 passwordresetconfrim,
+home,
 )
 
 app_name="user"
 urlpatterns=[
+    path("",home,name="home"),
     path("signup/",Signup,name="signup"),
     path("login/",Login.as_view(),name="login"),
     path("logout/",logout_view,name="logout"),
