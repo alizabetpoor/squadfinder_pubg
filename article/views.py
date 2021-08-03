@@ -20,9 +20,13 @@ from .forms import newsletterform, searchbar
 from django.views.decorators.http import require_POST
 # Create your views here.
 
+
+_article_per_page=5
+
+
 def home(request,page=1):
     articles=Squad_Article.objects.all().order_by("-publish")
-    paginate=Paginator(articles,5)
+    paginate=Paginator(articles,_article_per_page)
     article_page=paginate.get_page(page)
     page_range=paginate.get_elided_page_range(page, on_each_side=1, on_ends=2)
     page_range=list(page_range)
@@ -97,7 +101,7 @@ def teams_article(request,page=1):
 
         articles=Squad_Article.objects.all().order_by("-publish")
         form=searchbar()
-    paginate=Paginator(articles,8)
+    paginate=Paginator(articles,_article_per_page)
     query=request.get_full_path()
     if "?" in query:
         query=query.split("?")[1]
@@ -156,3 +160,15 @@ def register_newsletter(request):
 
         messages.error(request,error_msg)
     return redirect(reverse("article:home"))
+
+
+@login_required
+def user_articles(request,page=1):
+    user=request.user
+    articles=Squad_Article.objects.filter(author=user)
+    paginate=Paginator(articles,_article_per_page)
+    article_page=paginate.get_page(page)
+    page_range=paginate.get_elided_page_range(page, on_each_side=1, on_ends=2)
+    page_range=list(page_range)
+    context={"articles":article_page,"page_range":page_range}
+    return render(request,"article/user_article.html",context=context)

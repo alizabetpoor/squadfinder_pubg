@@ -1,0 +1,11 @@
+{% extends 'article/base.html' %}
+{% load base_tags %}
+
+
+{% block content %}
+    {% articles articles request %}
+{% endblock %}
+{% block pagination %}
+    {% pagination articles 'user:articles' page_range %}
+    
+{% endblock %}
