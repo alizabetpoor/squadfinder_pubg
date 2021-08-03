@@ -13,13 +13,14 @@
 
 <form method="POST" class="signin-form">
     {% csrf_token %}
+    {% if form.non_field_errors %}
+        <p class="alert alert-danger text-center">{{form.non_field_errors.as_text}}</p>
+    {% endif %}
     <div class="form-group">
         {{form.username|add_class:"form-control"|attr:"placeholder:نام کاربری"|attr:"required"}}
-        <!-- <input type="text" class="form-control" placeholder="نام کاربری" required> -->
     </div>
     <div class="form-group">
         {{form.password|add_class:"form-control"|attr:"placeholder:پسورد"|attr:"required"|attr:"id:password-field"}}
-        <!-- <input id="password-field" type="password" class="form-control" placeholder="پسورد" required> -->
         <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
     </div>
     <div class="form-group">
@@ -27,7 +28,7 @@
     </div>
     <div class="form-group d-md-flex">
         <div class="mr-3 text-md-right">
-            <a href="#" style="color: #fff">&larr; فراموشی پسورد</a>
+            <a href="{% url 'user:reset_password' %}" style="color: #fff">&larr; فراموشی پسورد</a>
         </div>
     </div>
 </form>

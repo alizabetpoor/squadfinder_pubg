@@ -248,6 +248,9 @@ main{
         flex-direction: column;
         align-items: center;
     }
+    .container-profile{
+        width: 90%;
+    }
     .bootdey{
         width: 90%!important;
     }
@@ -420,3 +423,6 @@ main{
 .form-check-label{
     margin-right: 20px;
 }
+
+
+
