@@ -8,7 +8,9 @@
         <ul class="menu d-none d-sm-flex">
             <li><i class="fas fa-home"></i><a href="{% url 'article:home' %}">خانه</a></li>
             <li><i class="fas fa-users"></i><a href="{% url 'article:teams' %}">تیم ها</a></li>
-            <li><i class="fas fa-user"></i><a href="#">کاربران</a></li>
+            {% if user.is_authenticated %}
+                <li><i class="fas fa-user"></i><a href="{% url 'user:articles' %}">درخواست های شما</a></li>
+            {% endif %}
         </ul>
     </section>
     <section class="left-header">
