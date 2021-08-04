@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="{% static 'article/assets/css/timeline.css' %}">
 {% endblock style_link %}
 
+
+{% block title %}{{article.id}}{% endblock title %}
+
 {% block content %}
 <section class="cards d-flex flex-column align-items-center mt-2">
     <section class="custom-card rounded">

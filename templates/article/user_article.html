@@ -1,7 +1,7 @@
 {% extends 'article/base.html' %}
 {% load base_tags %}
 
-
+{% block title %}درخواست های {{user.username}}{% endblock title %}
 {% block content %}
     {% articles articles request %}
 {% endblock %}
