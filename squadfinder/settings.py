@@ -15,7 +15,6 @@ from django.forms import Field
 from django.utils.translation import ugettext_lazy
 from django.contrib.messages import constants as messages
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,9 +36,10 @@ SECRET_KEY = '6+n_2o1+)pjm_9kz@mnlzs)n9utw&^j$5^@0b3+a-@(fc+hbyz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
+# FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'user.apps.UserConfig',
     'article.apps.ArticleConfig',
+    'user.apps.UserConfig',
     'crispy_forms',
     'widget_tweaks',
     'django_gravatar',
