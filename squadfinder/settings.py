@@ -34,7 +34,7 @@ Field.default_error_messages = {
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -138,11 +138,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'static'
 
-STATICFILES_DIRS=[
-    BASE_DIR / 'static',
-]
+# STATICFILES_DIRS=[
+#     BASE_DIR / 'static',
+# ]
 
 AUTH_USER_MODEL="user.User"
 
