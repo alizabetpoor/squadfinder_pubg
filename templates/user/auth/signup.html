@@ -1,44 +1,50 @@
 {% extends 'user/auth/base.html' %}
 {% load widget_tweaks %}
-
-{% block title %}عضویت{% endblock title %}
-
+{% block title%}عضویت{% endblock title %}
 {% block h2 %}
 <h2 class="heading-section">ثبت نام در سایت</h2>
 {% endblock %}
-
 {% block form %}
 
 <form method="POST" class="signin-form">
-    {% csrf_token %}
-    <div class="form-group">
-        {{form.username|add_class:"form-control"|attr:"placeholder:نام کاربری*"|attr:"required"}}
+  {% csrf_token %}
+  <div class="form-group">
+    {{form.username|add_class:"form-control"|attr:"placeholder:نام کاربری*"|attr:"required"}}
+  </div>
+  <div class="form-group">
+    {{form.email|add_class:"form-control"|attr:"placeholder:ایمیل*"|attr:"required"}}
+  </div>
+  <div class="form-group">
+    {{form.first_name|add_class:"form-control"|attr:"placeholder:نام(اختیاری)"}}
+  </div>
+  <div class="form-group">
+    {{form.last_name|add_class:"form-control"|attr:"placeholder:نام خانوادگی(اختیاری)"}}
+  </div>
+  <div class="form-group">
+    {{form.password1|add_class:"form-control"|attr:"placeholder:پسورد*"|attr:"required"|attr:"id:password-field"}}
+    <span
+      toggle="#password-field"
+      class="fa fa-fw fa-eye field-icon toggle-password"
+    ></span>
+  </div>
+  <div class="form-group">
+    {{form.password2|add_class:"form-control"|attr:"placeholder:تایید پسورد*"|attr:"required"|attr:"id:password-field"}}
+    <span
+      toggle="#password-field"
+      class="fa fa-fw fa-eye field-icon toggle-password"
+    ></span>
+  </div>
+  <div class="form-group">{{form.captcha}}</div>
+  <div class="form-group">
+    <button type="submit" class="form-control btn btn-primary submit px-3">
+      ثبت نام
+    </button>
+  </div>
+  <div class="form-group d-md-flex">
+    <div class="mr-3 text-md-right">
+      <a href="{% url 'user:login' %}" style="color: #fff">&larr; ورود</a>
     </div>
-    <div class="form-group">
-        {{form.email|add_class:"form-control"|attr:"placeholder:ایمیل*"|attr:"required"}}
-    </div>
-    <div class="form-group">
-        {{form.first_name|add_class:"form-control"|attr:"placeholder:نام(اختیاری)"}}
-    </div>
-    <div class="form-group">
-        {{form.last_name|add_class:"form-control"|attr:"placeholder:نام خانوادگی(اختیاری)"}}
-    </div>
-    <div class="form-group">
-        {{form.password1|add_class:"form-control"|attr:"placeholder:پسورد*"|attr:"required"|attr:"id:password-field"}}
-        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-    </div>
-    <div class="form-group">
-        {{form.password2|add_class:"form-control"|attr:"placeholder:تایید پسورد*"|attr:"required"|attr:"id:password-field"}}
-        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-    </div>
-    <div class="form-group">
-    <button type="submit" class="form-control btn btn-primary submit px-3">ثبت نام</button>
-    </div>
-    <div class="form-group d-md-flex">
-        <div class="mr-3 text-md-right">
-            <a href="{% url 'user:login' %}" style="color: #fff">&larr; ورود</a>
-        </div>
-    </div>
+  </div>
 </form>
 
 {% endblock %}

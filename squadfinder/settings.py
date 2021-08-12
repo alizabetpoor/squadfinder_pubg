@@ -19,9 +19,9 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-LOGIN_REDIRECT_URL="user:user_setting"
+LOGIN_REDIRECT_URL = "user:user_setting"
 
-LOGIN_URL="user:login"
+LOGIN_URL = "user:login"
 
 
 Field.default_error_messages = {
@@ -34,9 +34,9 @@ Field.default_error_messages = {
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_gravatar',
     'multiselectfield',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -138,13 +139,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'static'
+# STATIC_ROOT = BASE_DIR / 'static'
 
-# STATICFILES_DIRS=[
-#     BASE_DIR / 'static',
-# ]
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
-AUTH_USER_MODEL="user.User"
+AUTH_USER_MODEL = "user.User"
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
@@ -166,3 +167,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+
+
+RECAPTCHA_PUBLIC_KEY = config("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = config("RECAPTCHA_PRIVATE_KEY")
