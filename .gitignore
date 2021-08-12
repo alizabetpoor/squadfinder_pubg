@@ -5,3 +5,4 @@ fandogh.yml
 workspace.tar.gz
 .fandoghignore
 .env
+.prettierignore
