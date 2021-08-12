@@ -4,4 +4,4 @@
 [squad finder pubg](https://squadfinder-alizabetpoor.fandogh.cloud)
 # Todo features:
 - [x] Add google captcha for login and signup page
-- [-] Add send email verify to user
+- [ ] Add send email verify to user
